@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pemesanans', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('fotografer_id')->constrained('fotografers')->onDelete('cascade');
+            $table->enum('status', ['pending', 'process', 'denied', 'completed'])->default('pending');
+            $table->integer('biaya');
+            $table->string('date');
+            $table->string('start_time');
+            $table->string('end_time');
+            $table->decimal('total_jam');
             $table->timestamps();
         });
     }
