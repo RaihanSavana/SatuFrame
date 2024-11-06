@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('fotografers', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('nama_obat');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('spesialisasi');
-            $table->string('lokasi');
             $table->string('portofolio');
+            $table->longText('deskripsi');
+            $table->integer('biaya_per_jam');
             $table->timestamps();
         });
     }
