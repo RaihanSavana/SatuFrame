@@ -1,9 +1,11 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function Navbar({}) {
-    const [auth] = useState(true);
+export default function Navbar() {
+
+    const { auth } = usePage().props
+
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -42,7 +44,7 @@ export default function Navbar({}) {
                                 Satu
                             </h1>
                             <h1 className="font-bold text-xl text-black">
-                                Frame.
+                                Frame
                             </h1>
                         </div>
                     </Link>
@@ -54,7 +56,7 @@ export default function Navbar({}) {
                                     onClick={closeNavbar}
                                 >
                                     <span className="underline"></span>
-                                    <Link href={route("explore")}>
+                                    <Link href={route("landing_page")}>
                                         Explore
                                     </Link>
                                 </span>
@@ -91,7 +93,7 @@ export default function Navbar({}) {
                                             onClick={closeNavbar}
                                         >
                                             <span className="underline"></span>
-                                            <button className="bg-transparent border-2 border-blue-500 text-blue-500 py-0.3 px-5 rounded-full hover:bg-blue-500 hover:text-white transition duration-300">
+                                            <button className="button1 bg-transparent rounded-2xl font-semibold py-0.3 px-6 border border-blue-500 hover:border-transparent rounded transition-colors duration-500  text-base">
                                                 <Link
                                                     href={route("select_role")}
                                                 >
@@ -162,7 +164,7 @@ export default function Navbar({}) {
                         >
                             <Link
                                 className="hover:underline"
-                                href={route("explore")}
+                                href={route("landing_page")}
                             >
                                 Explore
                             </Link>
