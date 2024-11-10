@@ -10,8 +10,8 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         email: "",
-        number: "",
-        address: "",
+        nomor_telepon: "",
+        alamat: "",
         role: "",
         password: "",
         password_confirmation: "",
@@ -80,38 +80,38 @@ export default function Register() {
 
                 <div className="mt-4">
                     <InputLabel
-                        htmlFor="number"
+                        htmlFor="nomor_telepon"
                         value="Phone Number"
                     ></InputLabel>
 
                     <TextInput
-                        id="number"
+                        id="nomor_telepon"
                         type="number"
-                        name="number"
-                        value={data.number}
+                        name="nomor_telepon"
+                        value={data.nomor_telepon}
                         className="mt-1 block w-full"
                         autoComplete="new-number"
-                        onChange={(e) => setData("number", e.target.value)}
+                        onChange={(e) => setData("nomor_telepon", e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.number} className="mt-2" />
+                    <InputError message={errors.nomor_telepon} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="address" value="Address"></InputLabel>
+                    <InputLabel htmlFor="alamat" value="Address"></InputLabel>
 
                     <TextInput
-                        id="address"
-                        name="address"
-                        value={data.adress}
+                        id="alamat"
+                        name="alamat"
+                        value={data.alamat}
                         className="mt-1 block w-full"
                         autoComplete="new-adress"
-                        onChange={(e) => setData("adress", e.target.value)}
+                        onChange={(e) => setData("alamat", e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.address} className="mt-2" />
+                    <InputError message={errors.alamat} className="mt-2" />
                 </div>
 
                 <div className="mt-4">

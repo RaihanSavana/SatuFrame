@@ -15,7 +15,7 @@ Route::get('/', function () {
 
 Route::get('/select-role', function () {
     return Inertia::render('Auth/SelectRole');
-});
+})->name('select_role');
 
 
 
