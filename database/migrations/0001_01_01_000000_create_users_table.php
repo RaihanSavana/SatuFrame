@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('nomor_telepon')->unique();
+            $table->string('nomor_telepon')->unique();
             $table->string('alamat');
             $table->enum('role', ['user', 'fotografer'])->default('user');
             $table->timestamp('email_verified_at')->nullable();
