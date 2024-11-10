@@ -17,6 +17,14 @@ Route::get('/select-role', function () {
     return Inertia::render('Auth/SelectRole');
 })->name('select_role');
 
+Route::get('/explore', function() {
+    return Inertia::render('Auth/Explore');
+})->name('explore');
+
+Route::get('/profile', function () {
+    return Inertia::render('Auth/Profile');
+})->name('profile');
+
 
 
 require __DIR__.'/auth.php';
