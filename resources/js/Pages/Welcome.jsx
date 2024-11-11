@@ -18,13 +18,13 @@ export default function Welcome({ auth }) {
                     >
                         <div className="absolute inset-0 bg-black opacity-30"></div>
                         <div className="relative flex flex-col items-center justify-center h-full text-center text-white px-4">
-                            <h2 className="text-2xl font-semibold mb-2">
+                            <h2 className="text-4xl font-semibold mb-2">
                                 Your Simple Solution for Capturing
                             </h2>
                             <h2 className="text-2xl font-semibold mb-4">
                                 Life’s Most Precious Moments
                             </h2>
-                            <button className="bg-transparent border-2 border-blue-500 text-blue-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300">
+                            <button className="bg-transparent border-2 border-white-500 text-white-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300">
                                 Explore
                             </button>
                         </div>
@@ -33,9 +33,11 @@ export default function Welcome({ auth }) {
 
                 {/* Popular Section with Horizontally Scrollable Cards */}
                 <div className="pt-12 px-4 md:px-8 lg:px-16">
-                    <h2 className="text-3xl font-bold mb-6">Popular Section</h2>
+                    <h2 className="text-4xl font-bold mb-10">
+                        Popular Section
+                    </h2>
                     <div className="overflow-x-auto">
-                        <div className="flex gap-4">
+                        <div className="flex justify-evenly gap-2">
                             {/* Card 1 */}
                             <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
@@ -84,6 +86,32 @@ export default function Welcome({ auth }) {
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
+                                        src="/images/landingpage.jpg"
+                                        alt="Wedding"
+                                        className="rounded-xl w-32 h-32 object-cover"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                                <h3 className="text-white font-semibold text-lg mb-2 text-center">
+                                    Wedding
+                                </h3>
+                                <div className="bg-white rounded-xl p-2">
+                                    <img
+                                        src="/images/popular.jpg"
+                                        alt="Wedding"
+                                        className="rounded-xl w-32 h-32 object-cover"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                                <h3 className="text-white font-semibold text-lg mb-2 text-center">
+                                    Wedding
+                                </h3>
+                                <div className="bg-white rounded-xl p-2">
+                                    <img
                                         src="/images/popular.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
@@ -93,10 +121,10 @@ export default function Welcome({ auth }) {
                         </div>
                     </div>
 
-                    <h2 className="text-3xl font-bold mb-6 pt-6">
+                    <h2 className="text-5xl font-bold  pt-20 pb-10 text-center">
                         The Way of Linking Photographers and Users
                     </h2>
-                    <div className="flex flex-wrap gap-2 justify-center bg-gray-100 py-8 rounded-2xl">
+                    <div className="flex flex-wrap gap-2 justify-center bg-gray-100 py-8 pb rounded-2xl">
                         {/* Feature 1: Comprehensive Photographer Profiles */}
                         <div className="flex flex-col items-center text-center p-4 max-w-xs">
                             <h3 className="text-xl font-semibold mb-2">
@@ -151,13 +179,14 @@ export default function Welcome({ auth }) {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-col lg:flex-row items-center lg:items-start bg-white p-8 rounded-2xl shadow-md">
+
+                    <div className="flex flex-col lg:flex-row justify-center items-center lg:items-center py-20 rounded-2xl gap-4">
                         {/* Text Content */}
-                        <div className="lg:w-1/2 text-center lg:text-left mb-6 lg:mb-0 lg:mr-8">
-                            <h2 className="text-3xl font-bold mb-4">
+                        <div className="lg:w-1/4 text-center lg:text-left mb-6 lg:mb-0 lg:mr-8">
+                            <h2 className="text-5xl font-bold mb-4">
                                 Why SatuFrame?
                             </h2>
-                            <p className="text-gray-700 leading-relaxed">
+                            <p className="text-gray-700 text-lg leading-relaxed">
                                 With features tailored to meet the needs of both
                                 clients and photographers, SatuFrame offers a
                                 seamless and efficient experience. We provide
