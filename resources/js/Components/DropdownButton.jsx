@@ -8,7 +8,7 @@ const DropdownButton = ({ id, label, actions }) => {
     };
 
     return (
-        <div className="py-10">
+        <div>
             <div className="relative inline-block text-left">
                 <div>
                     <button

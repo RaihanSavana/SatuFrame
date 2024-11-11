@@ -22,7 +22,7 @@ export default function Explore() {
             <br />
 
             <div className="container mx-auto px-20 mx-10 pt-10">
-                <div className="grid grid-cols-1">
+                <div className="grid grid-cols-1 pb-7">
                     <div>
                         <h1 className="text-4xl font-bold">
                             You decide what you need.
