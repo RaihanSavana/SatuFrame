@@ -1,4 +1,4 @@
-import { Link, Head, usePage } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -40,11 +40,11 @@ export default function Navbar() {
                 <div className="container mx-auto px-4 py-6 flex justify-between items-center">
                     <Link href={route("landing_page")}>
                         <div className="flex items-center">
-                            <h1 className="font-bold text-xl text-black">
+                            <h1 className="font-bold text-2xl text-black">
                                 Satu
                             </h1>
-                            <h1 className="font-bold text-xl text-black">
-                                Frame
+                            <h1 className="font-bold text-2xl text-black">
+                                Frame.
                             </h1>
                         </div>
                     </Link>
@@ -56,24 +56,37 @@ export default function Navbar() {
                                     onClick={closeNavbar}
                                 >
                                     <span className="underline"></span>
-                                    <Link href={route("landing_page")}>
-                                        Explore
-                                    </Link>
+                                    <Link href={route("explore")}>Explore</Link>
                                 </span>
                             </li>
 
                             {auth.user ? (
-                                <li>
-                                    <span
-                                        className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                        onClick={closeNavbar}
-                                    >
-                                        <span className="underline"></span>
-                                        <Link href={route("landing_page")}>
-                                            Dashboard
-                                        </Link>
-                                    </span>
-                                </li>
+                                <>
+                                    <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link
+                                                href={route("user.dashboard")}
+                                            >
+                                                Dashboard
+                                            </Link>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link href={route("user.order")}>
+                                                Order
+                                            </Link>
+                                        </span>
+                                    </li>
+                                </>
                             ) : (
                                 <>
                                     <li>
@@ -164,24 +177,46 @@ export default function Navbar() {
                         >
                             <Link
                                 className="hover:underline"
-                                href={route("landing_page")}
+                                href={route("explore")}
                             >
                                 Explore
                             </Link>
                         </motion.li>
 
                         {auth.user ? (
-                            <motion.li
+                            <><motion.li
                                 whileHover={{ scale: 1 }}
                                 className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
                                 onClick={closeNavbar}
                             >
                                 <Link className="hover:underline">
-                                    <Link href={route("landing_page")}>
+                                    <Link href={route("user.dashboard")}>
                                         Dashboard
                                     </Link>
                                 </Link>
-                            </motion.li>
+                            </motion.li><motion.li
+                                whileHover={{ scale: 1 }}
+                                className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                onClick={closeNavbar}
+                            >
+                                    <Link className="hover:underline">
+                                        <Link href={route("user.order")}>
+                                            Order
+                                        </Link>
+                                    </Link>
+                                </motion.li>
+                                <motion.li
+                                whileHover={{ scale: 1 }}
+                                className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                onClick={closeNavbar}
+                            >
+                                    <Link className="hover:underline">
+                                        <Link href={route("user.order")}>
+                                            Order
+                                        </Link>
+                                    </Link>
+                                </motion.li>
+                                </>
                         ) : (
                             <>
                                 <motion.li

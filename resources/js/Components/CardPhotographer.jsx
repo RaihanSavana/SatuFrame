@@ -5,7 +5,7 @@ function CardPhotographer({ imageSrc, name, description, rating, price }) {
         <div className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white">
             <img
                 className="w-full h-48 object-cover"
-                src={imageSrc} // Use the image source passed as a prop
+                src={imageSrc} 
                 alt="Photographer"
             />
             <div className="p-4">

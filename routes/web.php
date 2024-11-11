@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckRole;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,6 +23,16 @@ Route::get('/select-role', function () {
 Route::get('/explore', function() {
     return Inertia::render('Auth/Explore');
 })->name('explore');
+
+
+// Route User
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/order', [UserController::class, 'order'])->name('user.order');
+});
+
+// Route Fotografer
 
 Route::get('/profile', function () {
     return Inertia::render('Auth/Profile');
