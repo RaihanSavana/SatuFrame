@@ -87,12 +87,22 @@ export default function Navbar() {
                                         </span>
                                     </li>
                                     <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link href={route("user.profile")}>
+                                                Profile
+                                            </Link>
+                                        </span>
+                                    </li>
+                                    <li>
                                         <div className="pt-2">
-                                            <Link href={route("logout")} >
-                                                <CiLogout size={18}/>
+                                            <Link href={route("logout")}>
+                                                <CiLogout size={18} />
                                             </Link>
                                         </div>
-
                                     </li>
                                 </>
                             ) : (

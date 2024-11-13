@@ -35,13 +35,16 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/order', [UserController::class, 'order'])->name('user.order');
+    Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
 });
 
 // Route Fotografer
 
-Route::get('/profile', function () {
-    return Inertia::render('Auth/Profile');
-})->name('profile');
+Route::middleware(['auth', 'role:fotografer'])->group(function () {
+    Route::get('/fotographer-profile', function () {
+        return Inertia::render('Auth/Profile');
+    })->name('fotographer.profile');
+});
 
 
 
