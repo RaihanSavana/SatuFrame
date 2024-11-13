@@ -24,7 +24,7 @@ export default function Welcome({ auth }) {
                             <h2 className="text-2xl font-semibold mb-4">
                                 Life’s Most Precious Moments
                             </h2>
-                            <button className="bg-transparent border-2 border-white-500 text-white-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white transition duration-300">
+                            <button className="bg-transparent border-2 border-white-500 text-white-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white hover:border-blue-500 transition duration-300">
                                 Explore
                             </button>
                         </div>

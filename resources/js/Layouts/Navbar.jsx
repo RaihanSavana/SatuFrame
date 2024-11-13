@@ -87,7 +87,7 @@ export default function Navbar() {
                                         </span>
                                     </li>
                                     <li>
-                                        <div className="pt-1">
+                                        <div className="pt-2">
                                             <Link href={route("logout")} >
                                                 <CiLogout size={18}/>
                                             </Link>
