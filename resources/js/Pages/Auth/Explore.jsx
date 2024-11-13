@@ -4,14 +4,19 @@ import DropdownButton from "@/Components/DropdownButton";
 import CardPhotographer from "@/Components/CardPhotographer";
 
 export default function Explore() {
-    const dropdownActions1 = [
-        { label: "Action 1", href: "#" },
-        { label: "Action 2", href: "#" },
+    const specializations = [
+        { label: "Wedding", href: "#" },
+        { label: "Graduation", href: "#" },
     ];
 
-    const dropdownActions2 = [
-        { label: "Action 3", href: "#" },
-        { label: "Action 4", href: "#" },
+    const locations = [
+        { label: "Malang", href: "#" },
+        { label: "Surabaya", href: "#" },
+    ];
+
+    const prices = [
+        { label: "300.000", href: "#" },
+        { label: "500.000", href: "#" },
     ];
 
     return (
@@ -33,13 +38,18 @@ export default function Explore() {
                 <div className="flex flex-wrap gap-5">
                     <DropdownButton
                         id={1}
-                        label="Options 1"
-                        actions={dropdownActions1}
+                        label="Specialization"
+                        actions={specializations}
                     />
                     <DropdownButton
                         id={2}
-                        label="Options 2"
-                        actions={dropdownActions2}
+                        label="Location"
+                        actions={locations}
+                    />
+                    <DropdownButton
+                        id={2}
+                        label="Price"
+                        actions={prices}
                     />
                 </div>
 

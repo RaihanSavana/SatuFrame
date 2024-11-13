@@ -16,7 +16,7 @@ export default function Profile({ auth }) {
                             <div className="bg-white shadow rounded-lg p-6">
                                 <div className="flex flex-col items-center">
                                     <img
-                                        src="#"
+                                        src="https://api.dicebear.com/7.x/lorelei/svg"
                                         className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                                     ></img>
                                     <h1 className="text-xl font-bold">
@@ -63,10 +63,10 @@ export default function Profile({ auth }) {
                                             Formal
                                         </li>
                                         {/* <li className="mb-2 px-4 py-2 border border-gray-300 rounded-full">
-                                            
+
                                         </li>
                                         <li className="mb-2 px-4 py-2 border border-gray-300 rounded-full">
-                                            
+
                                         </li> */}
                                     </ul>
                                 </div>
@@ -271,7 +271,12 @@ export default function Profile({ auth }) {
                                         Review
                                     </h3>
                                     <div className="flex items-start mt-4">
-                                        <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+                                        <div className="w-10 h-10 bg-gray-300 rounded-full">
+                                            <img
+                                                src="https://api.dicebear.com/7.x/pixel-art/svg"
+                                                alt=""
+                                            />
+                                        </div>
                                         <div className="ml-4">
                                             <h4 className="font-semibold">
                                                 Raihan
