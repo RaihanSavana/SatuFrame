@@ -117,14 +117,14 @@ export default function UserDashboard() {
             <br />
             <br />
 
-            <div className="container mx-auto px-20 mx-10 pt-10">
+            <div className="container mx-auto px-20 mx-10 pt-10 bg-[url('images/dashboarduser.jpg')]  h-[30vh]  bg-cover bg-center bg-no-repeat">
                 <div>
-                    <h1 className="text-4xl font-bold">Welcome Back, Raihan</h1>
+                    <h1 className="text-4xl font-bold text-white">Welcome Back, Raihan</h1>
                 </div>
 
-                <div className="flex flex-row pt-10">
-                    <div className="basis-3/5 stroke-black">
-                        <div className="flex flex-wrap justify-between shadow-xl rounded-2xl p-5">
+                <div className="flex flex-row pt-10 bg ">
+                    <div className="basis-3/5 stroke-black rounded-2xl bg-white">
+                        <div className="flex flex-wrap justify-between rounded-2xl shadow-xl  p-5">
                             <div className="">
                                 <p className="text-xl font-bold">
                                     Looking for Photographer?
@@ -135,7 +135,7 @@ export default function UserDashboard() {
                                 </p>
                             </div>
                             <div className="p-2">
-                                <Button variant="outlined" color="secondary">
+                                <Button variant="outlined" color="primary">
                                     Get Started
                                 </Button>
                             </div>
@@ -202,7 +202,7 @@ export default function UserDashboard() {
                 </div>
             </div>
 
-            <Footer/>
+
         </>
     );
 }
