@@ -2,10 +2,10 @@ import React from "react";
 
 function CardPhotographer({ imageSrc, name, description, rating, price }) {
     return (
-        <div className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white">
+        <div className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white transform transition duration-300 hover:scale-105 hover:shadow-2xl">
             <img
                 className="w-full h-48 object-cover"
-                src={imageSrc} 
+                src={imageSrc}
                 alt="Photographer"
             />
             <div className="p-4">
