@@ -24,6 +24,11 @@ Route::get('/explore', function() {
     return Inertia::render('Auth/Explore');
 })->name('explore');
 
+// Logout
+Route::middleware(['auth'])->group(function(){
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+});
+
 
 // Route User
 

@@ -2,6 +2,111 @@ import CardPhotographer from "@/Components/CardPhotographer";
 import Footer from "@/Components/Footer";
 import Navbar from "@/Layouts/Navbar";
 import { Button } from "@mui/material";
+import DataTable from "react-data-table-component";
+
+
+const columns = [
+    {
+        name: "No",
+        selector: (row) => row.id,
+    },
+    {
+        name: "Photographer Name",
+        selector: (row) => row.name,
+    },
+    {
+        name: "Hours",
+        selector: (row) => row.hour,
+    },
+    {
+        name: "Price",
+        selector: (row) => row.price,
+    },
+    {
+        name: "Status",
+        selector: (row) => row.status,
+    },
+];
+
+const data = [
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+    {
+        id: 1,
+        name: "Wildan Arya Ganteng",
+        hour: "3",
+        price: "300.000",
+        status: "Done",
+    },
+];
 
 export default function UserDashboard() {
 
@@ -78,45 +183,22 @@ export default function UserDashboard() {
                 </div>
 
                 <div class="overflow-x-auto pt-5 pb-5">
-                    <table class="min-w-full table-auto border border-gray-300">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th class="px-4 py-2 border border-gray-300 text-left font-semibold">
-                                    Name
-                                </th>
-                                <th class="px-4 py-2 border border-gray-300 text-left font-semibold">
-                                    Email
-                                </th>
-                                <th class="px-4 py-2 border border-gray-300 text-left font-semibold">
-                                    Role
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="px-4 py-2 border border-gray-300">
-                                    John Doe
-                                </td>
-                                <td class="px-4 py-2 border border-gray-300">
-                                    john@example.com
-                                </td>
-                                <td class="px-4 py-2 border border-gray-300">
-                                    Admin
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-100">
-                                <td class="px-4 py-2 border border-gray-300">
-                                    Jane Smith
-                                </td>
-                                <td class="px-4 py-2 border border-gray-300">
-                                    jane@example.com
-                                </td>
-                                <td class="px-4 py-2 border border-gray-300">
-                                    Editor
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <DataTable
+                        columns={columns}
+                        data={data}
+                        direction="auto"
+                        fixedHeader
+                        fixedHeaderScrollHeight="300px"
+                        highlightOnHover
+                        noHeader
+                        pagination
+                        pointerOnHover
+                        responsive
+                        selectableRowsRadio="checkbox"
+                        striped
+                        subHeaderAlign="center"
+                        subHeaderWrap
+                    />
                 </div>
             </div>
 
