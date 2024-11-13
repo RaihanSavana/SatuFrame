@@ -1,10 +1,10 @@
 import { Link, usePage } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { CiLogout } from "react-icons/ci";
 
 export default function Navbar() {
-
-    const { auth } = usePage().props
+    const { auth } = usePage().props;
 
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -85,6 +85,14 @@ export default function Navbar() {
                                                 Order
                                             </Link>
                                         </span>
+                                    </li>
+                                    <li>
+                                        <div className="pt-1">
+                                            <Link href={route("logout")} >
+                                                <CiLogout size={18}/>
+                                            </Link>
+                                        </div>
+
                                     </li>
                                 </>
                             ) : (
@@ -184,21 +192,23 @@ export default function Navbar() {
                         </motion.li>
 
                         {auth.user ? (
-                            <><motion.li
-                                whileHover={{ scale: 1 }}
-                                className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                onClick={closeNavbar}
-                            >
-                                <Link className="hover:underline">
-                                    <Link href={route("user.dashboard")}>
-                                        Dashboard
+                            <>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
+                                    <Link className="hover:underline">
+                                        <Link href={route("user.dashboard")}>
+                                            Dashboard
+                                        </Link>
                                     </Link>
-                                </Link>
-                            </motion.li><motion.li
-                                whileHover={{ scale: 1 }}
-                                className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                onClick={closeNavbar}
-                            >
+                                </motion.li>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
                                     <Link className="hover:underline">
                                         <Link href={route("user.order")}>
                                             Order
@@ -206,17 +216,17 @@ export default function Navbar() {
                                     </Link>
                                 </motion.li>
                                 <motion.li
-                                whileHover={{ scale: 1 }}
-                                className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                onClick={closeNavbar}
-                            >
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
                                     <Link className="hover:underline">
-                                        <Link href={route("user.order")}>
-                                            Order
+                                        <Link href={route("logout")}>
+                                            Logout
                                         </Link>
                                     </Link>
                                 </motion.li>
-                                </>
+                            </>
                         ) : (
                             <>
                                 <motion.li
