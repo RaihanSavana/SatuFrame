@@ -24,7 +24,7 @@ export default function Welcome({ auth }) {
                             <h2 className="text-2xl font-semibold mb-4">
                                 Life’s Most Precious Moments
                             </h2>
-                            <button className="bg-transparent border-2 border-white-500 text-white-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white hover:border-blue-500 transition duration-300">
+                            <button className="bg-transparent border-2 border-white text-white-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white hover:border-blue-500 transition duration-300">
                                 Explore
                             </button>
                         </div>
@@ -39,13 +39,13 @@ export default function Welcome({ auth }) {
                     <div className="overflow-x-auto">
                         <div className="flex justify-evenly gap-2">
                             {/* Card 1 */}
-                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                            <div className="bg-pink-600 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
                                     Wedding
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
-                                        src="/images/landingpage.jpg"
+                                        src="/images/popular.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
                                     />
@@ -53,13 +53,13 @@ export default function Welcome({ auth }) {
                             </div>
 
                             {/* Card 2 */}
-                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                            <div className="bg-yellow-500 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
-                                    Wedding
+                                    Pre-Wedding
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
-                                        src="/images/popular.jpg"
+                                        src="/images/prewedding.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
                                     />
@@ -67,52 +67,52 @@ export default function Welcome({ auth }) {
                             </div>
 
                             {/* Additional Cards */}
-                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                            <div className="bg-cyan-500 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
-                                    Wedding
+                                    Graduation
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
-                                        src="/images/landingpage.jpg"
+                                        src="/images/graduation.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
                                     />
                                 </div>
                             </div>
 
-                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                            <div className="bg-stone-500 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
-                                    Wedding
+                                    Photoshoot
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
-                                        src="/images/landingpage.jpg"
+                                        src="/images/professional.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
                                     />
                                 </div>
                             </div>
 
-                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                            <div className="bg-orange-500 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
-                                    Wedding
+                                    Hiking
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
-                                        src="/images/popular.jpg"
+                                        src="/images/hiking.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
                                     />
                                 </div>
                             </div>
 
-                            <div className="bg-blue-700 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
+                            <div className="bg-red-600 rounded-2xl p-4 min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px]">
                                 <h3 className="text-white font-semibold text-lg mb-2 text-center">
-                                    Wedding
+                                    Sport
                                 </h3>
                                 <div className="bg-white rounded-xl p-2">
                                     <img
-                                        src="/images/popular.jpg"
+                                        src="/images/sport.jpg"
                                         alt="Wedding"
                                         className="rounded-xl w-32 h-32 object-cover"
                                     />

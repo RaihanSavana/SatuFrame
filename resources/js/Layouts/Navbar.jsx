@@ -51,98 +51,106 @@ export default function Navbar() {
                     <div className="flex items-center">
                         <ul className="flex gap-8">
                             {auth.user ? (
-                                auth.role === 'fotografer' ? (
+                                auth.role === "fotografer" ? (
                                     <>
-                                    <li>
-                                        <span
-                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                            onClick={closeNavbar}
-                                        >
-                                            <span className="underline"></span>
-                                            <Link
-                                                href={route("fotografer.dashboard")}
+                                        <li>
+                                            <span
+                                                className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                                onClick={closeNavbar}
                                             >
-                                                Dashboard
-                                            </Link>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span
-                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                            onClick={closeNavbar}
-                                        >
-                                            <span className="underline"></span>
-                                            <Link
-                                                href={route('fotografer.profile')}
+                                                <span className="underline"></span>
+                                                <Link
+                                                    href={route(
+                                                        "fotografer.dashboard"
+                                                    )}
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span
+                                                className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                                onClick={closeNavbar}
                                             >
-                                                Profile
-                                            </Link>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <div className="pt-1">
-                                            <Link href={route("logout")}>
-                                                <CiLogout size={18} />
-                                            </Link>
-                                        </div>
-                                    </li>
+                                                <span className="underline"></span>
+                                                <Link
+                                                    href={route(
+                                                        "fotografer.profile"
+                                                    )}
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <div className="pt-1">
+                                                <Link href={route("logout")}>
+                                                    <CiLogout size={18} />
+                                                </Link>
+                                            </div>
+                                        </li>
                                     </>
-                                ) :
-                                <>
-                                    <li>
-                                        <span
-                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                            onClick={closeNavbar}
-                                        >
-                                            <span className="underline"></span>
-                                            <Link
-                                                href={route("user.dashboard")}
+                                ) : (
+                                    <>
+                                        <li>
+                                            <span
+                                                className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                                onClick={closeNavbar}
                                             >
-                                                Dashboard
-                                            </Link>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span
-                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                            onClick={closeNavbar}
-                                        >
-                                            <span className="underline"></span>
-                                            <Link href={route("explore")}>
-                                                Explore
-                                            </Link>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span
-                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                            onClick={closeNavbar}
-                                        >
-                                            <span className="underline"></span>
-                                            <Link href={route("user.order")}>
-                                                Order
-                                            </Link>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span
-                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                            onClick={closeNavbar}
-                                        >
-                                            <span className="underline"></span>
-                                            <Link href={route("user.profile")}>
-                                                Profile
-                                            </Link>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <div className="pt-1">
-                                            <Link href={route("logout")}>
-                                                <CiLogout size={18} />
-                                            </Link>
-                                        </div>
-                                    </li>
-                                </>
+                                                <span className="underline"></span>
+                                                <Link
+                                                    href={route(
+                                                        "user.dashboard"
+                                                    )}
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span
+                                                className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                                onClick={closeNavbar}
+                                            >
+                                                <span className="underline"></span>
+                                                <Link href={route("explore")}>
+                                                    Explore
+                                                </Link>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span
+                                                className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                                onClick={closeNavbar}
+                                            >
+                                                <span className="underline"></span>
+                                                <Link
+                                                    href={route("user.order")}
+                                                >
+                                                    Order
+                                                </Link>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <div className="">
+                                                <Link href={route("user.profile")}>
+                                                    <img
+                                                        src="https://api.dicebear.com/7.x/lorelei/svg"
+                                                        className="w-8 h-8 bg-gray-300 rounded-full mb-4 shrink-0"
+                                                    ></img>
+                                                </Link>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="pt-1">
+                                                <Link href={route("logout")}>
+                                                    <CiLogout size={18} />
+                                                </Link>
+                                            </div>
+                                        </li>
+                                    </>
+                                )
                             ) : (
                                 <>
                                     <li>
@@ -238,90 +246,101 @@ export default function Navbar() {
                 >
                     <ul className="flex flex-col gap-4">
                         {auth.user ? (
-                            auth.role === 'fotografer' ? (
+                            auth.role === "fotografer" ? (
                                 <>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link className="hover:underline">
-                                        <Link href={route("fotografer.dashboard")}>
-                                            Dashboard
-                                        </Link>
-                                    </Link>
-                                </motion.li>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link className="hover:underline">
-                                        <Link href={route("fotografer.profile")}>
-                                            Profile
-                                        </Link>
-                                    </Link>
-                                </motion.li>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link className="hover:underline">
-                                        <Link href={route("logout")}>
-                                            Logout
-                                        </Link>
-                                    </Link>
-                                </motion.li>
-                                </>
-                            ) :
-                            <>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link className="hover:underline">
-                                        <Link href={route("user.dashboard")}>
-                                            Dashboard
-                                        </Link>
-                                    </Link>
-                                </motion.li>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link
-                                        className="hover:underline"
-                                        href={route("explore")}
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
                                     >
-                                        Explore
-                                    </Link>
-                                </motion.li>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link className="hover:underline">
-                                        <Link href={route("user.order")}>
-                                            Order
+                                        <Link className="hover:underline">
+                                            <Link
+                                                href={route(
+                                                    "fotografer.dashboard"
+                                                )}
+                                            >
+                                                Dashboard
+                                            </Link>
                                         </Link>
-                                    </Link>
-                                </motion.li>
-                                <motion.li
-                                    whileHover={{ scale: 1 }}
-                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <Link className="hover:underline">
-                                        <Link href={route("logout")}>
-                                            Logout
+                                    </motion.li>
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
+                                    >
+                                        <Link className="hover:underline">
+                                            <Link
+                                                href={route(
+                                                    "fotografer.profile"
+                                                )}
+                                            >
+                                                Profile
+                                            </Link>
                                         </Link>
-                                    </Link>
-                                </motion.li>
-                            </>
+                                    </motion.li>
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
+                                    >
+                                        <Link className="hover:underline">
+                                            <Link href={route("logout")}>
+                                                Logout
+                                            </Link>
+                                        </Link>
+                                    </motion.li>
+                                </>
+                            ) : (
+                                <>
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
+                                    >
+                                        <Link className="hover:underline">
+                                            <Link
+                                                href={route("user.dashboard")}
+                                            >
+                                                Dashboard
+                                            </Link>
+                                        </Link>
+                                    </motion.li>
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
+                                    >
+                                        <Link
+                                            className="hover:underline"
+                                            href={route("explore")}
+                                        >
+                                            Explore
+                                        </Link>
+                                    </motion.li>
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
+                                    >
+                                        <Link className="hover:underline">
+                                            <Link href={route("user.order")}>
+                                                Order
+                                            </Link>
+                                        </Link>
+                                    </motion.li>
+                                    <motion.li
+                                        whileHover={{ scale: 1 }}
+                                        className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                        onClick={closeNavbar}
+                                    >
+                                        <Link className="hover:underline">
+                                            <Link href={route("logout")}>
+                                                Logout
+                                            </Link>
+                                        </Link>
+                                    </motion.li>
+                                </>
+                            )
                         ) : (
                             <>
                                 <motion.li

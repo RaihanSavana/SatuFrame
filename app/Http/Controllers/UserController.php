@@ -18,6 +18,12 @@ class UserController extends Controller
         ]);
     }
 
+    public function create(){
+        return Inertia::render('Auth/UserEditProfile', [
+            'user' => Auth::user(),
+        ]);
+    }
+
     public function dashboard() {
         return Inertia::render('Auth/UserDashboard');
     }
@@ -44,7 +50,7 @@ class UserController extends Controller
             'alamat' => $request->input('alamat'),
         ]);
 
-        return redirect()->route('user.profile')->with('message', 'Profile updated successfully!');
+        return redirect(route('user.profile'))->with('message', 'Profile updated successfully!');
 
     }
 
