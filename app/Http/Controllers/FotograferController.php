@@ -65,7 +65,6 @@ class FotograferController extends Controller
 
     public function updateInformation(Request $request)
     {
-        
     }
 
 
