@@ -36,14 +36,18 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/order', [UserController::class, 'order'])->name('user.order');
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
+    Route::patch('user-profile/update/{id}', [UserController::class, 'update'])->name('user.update');
 });
 
 // Route Fotografer
 
 Route::middleware(['auth', 'role:fotografer'])->group(function () {
-    Route::get('/fotographer-profile', function () {
-        return Inertia::render('Auth/Profile');
-    })->name('fotographer.profile');
+    Route::get('/dashboard-fotografer', function () {
+        return Inertia::render('Auth/FotograferDashboard');
+    })->name('fotografer.dashboard');
+    Route::get('/profile-fotografer', function () {
+        return Inertia::render('Auth/FotograferProfile');
+    })->name('fotografer.profile');
 });
 
 
