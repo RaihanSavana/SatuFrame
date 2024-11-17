@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('fotografers', function (Blueprint $table) {
             $table->id()->primary();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('spesialisasi');
-            $table->string('portofolio');
-            $table->longText('deskripsi');
-            $table->integer('biaya_per_jam');
+            $table->string('spesialisasi')->nullable();
+            $table->string('portofolio')->nullable();
+            $table->string('foto_profil')->nullable();
+            $table->longText('deskripsi')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('floor_price')->nullable();
             $table->timestamps();
         });
     }

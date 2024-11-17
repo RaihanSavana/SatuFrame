@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\FotograferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckRole;
+use App\Models\Fotografer;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,12 +44,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 // Route Fotografer
 
 Route::middleware(['auth', 'role:fotografer'])->group(function () {
-    Route::get('/dashboard-fotografer', function () {
-        return Inertia::render('Auth/FotograferDashboard');
-    })->name('fotografer.dashboard');
-    Route::get('/profile-fotografer', function () {
-        return Inertia::render('Auth/FotograferProfile');
-    })->name('fotografer.profile');
+    Route::get('/dashboard', [FotograferController::class, 'index'])->name('fotografer.dashboard');
+    Route::get('/profile', [FotograferController::class, 'show'])->name('fotografer.profile');
+    Route::get('/profile/edit', [FotograferController::class, 'editProfile'])->name('fotografer.edit.profile');
+    Route::get('/information/edit', [FotograferController::class, 'editInformation'])->name('fotografer.edit.information');
+    Route::patch('/profile/edit/{id}', [FotograferController::class, 'updateProfile'])->name('fotografer.update.profile');
+    Route::post('/information/update', [FotograferController::class, 'updateInformation'])->name('fotografer.update.information');
 });
 
 

@@ -25,7 +25,7 @@ export default function FotograferProfile({ auth }) {
                                     <p className="text-gray-700">photografer</p>
                                     <div className="mt-6 flex flex-wrap gap-4 justify-center">
                                         <a
-                                            href="#"
+                                            href={route('fotografer.edit.profile')}
                                             className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
                                         >
                                             Edit Profile
@@ -162,77 +162,7 @@ export default function FotograferProfile({ auth }) {
                                     vulputate pharetra tellus, in luctus risus
                                     rhoncus id.
                                 </p>
-
-                                <h2 className="text-xl font-bold mt-6 mb-4">
-                                    Experience
-                                </h2>
-                                <div className="mb-6">
-                                    <div className="flex justify-between flex-wrap gap-2 w-full">
-                                        <span className="text-gray-700 font-bold">
-                                            /placeholder
-                                        </span>
-                                        <p>
-                                            <span className="text-gray-700 mr-2">
-                                                /placeholder
-                                            </span>
-                                            <span className="text-gray-700">
-                                                /placeholder
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <p className="mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Sed finibus est vitae
-                                        tortor ullamcorper, ut vestibulum velit
-                                        convallis. Aenean posuere risus non
-                                        velit egestas suscipit.
-                                    </p>
-                                </div>
-                                <div className="mb-6">
-                                    <div className="flex justify-between flex-wrap gap-2 w-full">
-                                        <span className="text-gray-700 font-bold">
-                                            /placeholder
-                                        </span>
-                                        <p>
-                                            <span className="text-gray-700 mr-2">
-                                                /placeholder
-                                            </span>
-                                            <span className="text-gray-700">
-                                                /placeholder
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <p className="mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Sed finibus est vitae
-                                        tortor ullamcorper, ut vestibulum velit
-                                        convallis. Aenean posuere risus non
-                                        velit egestas suscipit.
-                                    </p>
-                                </div>
-                                <div className="mb-6">
-                                    <div className="flex justify-between flex-wrap gap-2 w-full">
-                                        <span className="text-gray-700 font-bold">
-                                            /placeholder
-                                        </span>
-                                        <p>
-                                            <span className="text-gray-700 mr-2">
-                                                /placeholder
-                                            </span>
-                                            <span className="text-gray-700">
-                                                /placeholder
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <p className="mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Sed finibus est vitae
-                                        tortor ullamcorper, ut vestibulum velit
-                                        convallis. Aenean posuere risus non
-                                        velit egestas suscipit.
-                                    </p>
-                                </div>
-                                <h3 className="text-xl font-semibold">
+                                <h3 className="text-xl font-semibold pt-5">
                                     Portofolio
                                 </h3>
                                 <div className="grid grid-cols-2 gap-4 mt-4">
@@ -265,6 +195,15 @@ export default function FotograferProfile({ auth }) {
                                         />
                                     </div>
                                 </div>
+                                <div className="pt-5">
+                                    <a
+                                        href={route('fotografer.edit.information')}
+                                        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
+                                    >
+                                        Edit Information
+                                    </a>
+                                </div>
+
                                 <br />
                                 <section>
                                     <h3 className="text-xl font-semibold">
