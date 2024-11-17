@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if (Auth::user()->role === 'fotografer') {
-            return redirect()->route('fotografer.profile');
+            return redirect()->route('fotografer.dashboard');
         }
 
         return redirect()->intended(route('landing_page', absolute: false));
