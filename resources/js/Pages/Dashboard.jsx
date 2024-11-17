@@ -1,7 +1,17 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
+import toast from 'react-hot-toast';
+const { flash } = usePage().props;
+{
+    flash.message &&
+        toast.success(flash.message, {
+            duration: 4000,
+        });
+}
+console.log(message);
 
 export default function Dashboard() {
+
     return (
         <AuthenticatedLayout
             header={
