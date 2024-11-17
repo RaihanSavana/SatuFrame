@@ -50,17 +50,44 @@ export default function Navbar() {
                     </Link>
                     <div className="flex items-center">
                         <ul className="flex gap-8">
-                            <li>
-                                <span
-                                    className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                                    onClick={closeNavbar}
-                                >
-                                    <span className="underline"></span>
-                                    <Link href={route("explore")}>Explore</Link>
-                                </span>
-                            </li>
-
                             {auth.user ? (
+                                auth.role === 'fotografer' ? (
+                                    <>
+                                    <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link
+                                                href={route("fotografer.dashboard")}
+                                            >
+                                                Dashboard
+                                            </Link>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link
+                                                href={route('fotografer.profile')}
+                                            >
+                                                Profile
+                                            </Link>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <div className="pt-1">
+                                            <Link href={route("logout")}>
+                                                <CiLogout size={18} />
+                                            </Link>
+                                        </div>
+                                    </li>
+                                    </>
+                                ) :
                                 <>
                                     <li>
                                         <span
@@ -72,6 +99,17 @@ export default function Navbar() {
                                                 href={route("user.dashboard")}
                                             >
                                                 Dashboard
+                                            </Link>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link href={route("explore")}>
+                                                Explore
                                             </Link>
                                         </span>
                                     </li>
@@ -98,7 +136,7 @@ export default function Navbar() {
                                         </span>
                                     </li>
                                     <li>
-                                        <div className="pt-2">
+                                        <div className="pt-1">
                                             <Link href={route("logout")}>
                                                 <CiLogout size={18} />
                                             </Link>
@@ -107,6 +145,17 @@ export default function Navbar() {
                                 </>
                             ) : (
                                 <>
+                                    <li>
+                                        <span
+                                            className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                            onClick={closeNavbar}
+                                        >
+                                            <span className="underline"></span>
+                                            <Link href={route("explore")}>
+                                                Explore
+                                            </Link>
+                                        </span>
+                                    </li>
                                     <li>
                                         <span
                                             className="nav cursor-pointer text-black hover:text-blue-500 relative font-bold"
@@ -188,20 +237,44 @@ export default function Navbar() {
                     } ${isScrolled || isOpen ? "bg-white shadow-md" : ""}`}
                 >
                     <ul className="flex flex-col gap-4">
-                        <motion.li
-                            whileHover={{ scale: 1 }}
-                            className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
-                            onClick={closeNavbar}
-                        >
-                            <Link
-                                className="hover:underline"
-                                href={route("explore")}
-                            >
-                                Explore
-                            </Link>
-                        </motion.li>
-
                         {auth.user ? (
+                            auth.role === 'fotografer' ? (
+                                <>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
+                                    <Link className="hover:underline">
+                                        <Link href={route("fotografer.dashboard")}>
+                                            Dashboard
+                                        </Link>
+                                    </Link>
+                                </motion.li>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
+                                    <Link className="hover:underline">
+                                        <Link href={route("fotografer.profile")}>
+                                            Profile
+                                        </Link>
+                                    </Link>
+                                </motion.li>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
+                                    <Link className="hover:underline">
+                                        <Link href={route("logout")}>
+                                            Logout
+                                        </Link>
+                                    </Link>
+                                </motion.li>
+                                </>
+                            ) :
                             <>
                                 <motion.li
                                     whileHover={{ scale: 1 }}
@@ -212,6 +285,18 @@ export default function Navbar() {
                                         <Link href={route("user.dashboard")}>
                                             Dashboard
                                         </Link>
+                                    </Link>
+                                </motion.li>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
+                                    <Link
+                                        className="hover:underline"
+                                        href={route("explore")}
+                                    >
+                                        Explore
                                     </Link>
                                 </motion.li>
                                 <motion.li
@@ -239,6 +324,18 @@ export default function Navbar() {
                             </>
                         ) : (
                             <>
+                                <motion.li
+                                    whileHover={{ scale: 1 }}
+                                    className="cursor-pointer text-black hover:text-blue-500 relative font-bold"
+                                    onClick={closeNavbar}
+                                >
+                                    <Link
+                                        className="hover:underline"
+                                        href={route("explore")}
+                                    >
+                                        Explore
+                                    </Link>
+                                </motion.li>
                                 <motion.li
                                     whileHover={{ scale: 1 }}
                                     className="cursor-pointer text-black hover:text-blue-500 relative font-bold"

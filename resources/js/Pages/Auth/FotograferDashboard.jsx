@@ -1,7 +1,6 @@
-import CardPhotographer from "@/Components/CardPhotographer";
 import Navbar from "@/Layouts/Navbar";
-import { Button } from "@mui/material";
 import DataTable from "react-data-table-component";
+import { Button } from "@mui/material";
 
 
 const columns = [
@@ -107,16 +106,15 @@ const data = [
     },
 ];
 
-export default function UserDashboard() {
+export default function FotograferDashboard() {
 
     return (
         <>
-            <Navbar />
-            <br />
-            <br />
-            <br />
-
-            <div className="container mx-auto px-20 mx-10 pt-10 bg-[url('images/dashboarduser.jpg')]  h-[30vh]  bg-cover bg-center bg-no-repeat">
+        <Navbar></Navbar>
+        <br />
+        <br />
+        <br />
+        <div className="container mx-auto px-20 mx-10 pt-10 bg-[url('images/dashboarduser.jpg')]  h-[30vh]  bg-cover bg-center bg-no-repeat">
                 <div>
                     <h1 className="text-4xl font-bold text-white">Welcome Back, Raihan</h1>
                 </div>
@@ -126,7 +124,7 @@ export default function UserDashboard() {
                         <div className="flex flex-wrap justify-between rounded-2xl shadow-xl  p-5">
                             <div className="">
                                 <p className="text-xl font-bold">
-                                    Looking for Photographer?
+                                    Enhance your profile
                                 </p>
                                 <p>
                                     Find the best shooter that match on your
@@ -135,46 +133,11 @@ export default function UserDashboard() {
                             </div>
                             <div className="p-2">
                                 <Button variant="outlined" color="primary">
-                                    Get Started
+                                    Update Profile
                                 </Button>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="pt-10 ps-3">
-                    <h1 className="text-4xl font-bold">Maybe you interest</h1>
-                </div>
-
-                <div className="flex gap-5 mt-5">
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
                 </div>
 
                 <div className="pt-10 ps-3">
@@ -200,8 +163,6 @@ export default function UserDashboard() {
                     />
                 </div>
             </div>
-
-
         </>
     );
 }
