@@ -14,7 +14,9 @@ class Fotografer extends Model
         'spesialisasi',
         'portofolio',
         'deskripsi',
-        'biaya_per_jam'
+        'floor_price',
+        'kota',
+        'foto_profil'
     ];
 
     // Relationships
