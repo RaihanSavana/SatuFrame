@@ -134,7 +134,7 @@ export default function Navbar() {
                                         </li>
                                         <li>
                                             <div className="">
-                                                <Link href={route("user.profile")}>
+                                                <Link href={route("user.edit.profile")}>
                                                     <img
                                                         src="https://api.dicebear.com/7.x/lorelei/svg"
                                                         className="w-8 h-8 bg-gray-300 rounded-full mb-4 shrink-0"
