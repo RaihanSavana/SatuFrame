@@ -18,6 +18,10 @@ Route::get('/', function () {
     ]);
 })->name('landing_page');
 
+Route::get('profile/{id}', [ExploreController::class, 'show'])->name('show.profile');
+
+Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
+
 Route::get('/select-role', function () {
     return Inertia::render('Auth/SelectRole');
 })->name('select_role');
@@ -36,7 +40,8 @@ Route::middleware(['auth'])->group(function(){
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user-dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
-    Route::get('/order', [UserController::class, 'order'])->name('user.order');
+    Route::get('/order', [OrderController::class, 'index'])->name('user.order');
+    Route::post('order/store/{id}', [OrderController::class, 'store'])->name('user.order.store');
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     Route::get('/user-profile/edit', [UserController::class, 'create'])->name('user.edit.profile');
     Route::patch('user-profile/edit/{id}', [UserController::class, 'update'])->name('user.update');
@@ -48,10 +53,11 @@ Route::middleware(['auth', 'role:fotografer'])->group(function () {
     Route::get('/dashboard', [FotograferController::class, 'index'])->name('fotografer.dashboard');
     Route::get('/profile', [FotograferController::class, 'show'])->name('fotografer.profile');
     Route::get('/profile/edit', [FotograferController::class, 'editProfile'])->name('fotografer.edit.profile');
-    Route::get('/information/edit', [FotograferController::class, 'editInformation'])->name('fotografer.edit.information');
     Route::patch('/profile/edit/{id}', [FotograferController::class, 'updateProfile'])->name('fotografer.update.profile');
-    Route::post('/information/update', [FotograferController::class, 'updateInformation'])->name('fotografer.update.information');
+    Route::get('/information/edit', [FotograferController::class, 'editInformation'])->name('fotografer.edit.information');
     Route::post('/information', [FotograferController::class, 'store'])->name('fotografer.store.information');
+    Route::get('/information/update', [FotograferController::class, 'indexInformation'])->name('fotografer.index.information');
+    Route::patch('/information/update/{id}', [FotograferController::class, 'updateInformation'])->name('fotografer.update.information');
 });
 
 
