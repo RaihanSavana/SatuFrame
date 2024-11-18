@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user-dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/order', [UserController::class, 'order'])->name('user.order');
+    Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     Route::get('/user-profile/edit', [UserController::class, 'create'])->name('user.edit.profile');
     Route::patch('user-profile/edit/{id}', [UserController::class, 'update'])->name('user.update');
 });
