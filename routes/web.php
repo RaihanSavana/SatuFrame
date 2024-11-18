@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\FotograferController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
-use App\Http\Middleware\CheckRole;
-use App\Models\Fotografer;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Fotografer;
+use App\Http\Middleware\CheckRole;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FotograferController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -58,6 +60,10 @@ Route::middleware(['auth', 'role:fotografer'])->group(function () {
     Route::post('/information', [FotograferController::class, 'store'])->name('fotografer.store.information');
     Route::get('/information/update', [FotograferController::class, 'indexInformation'])->name('fotografer.index.information');
     Route::patch('/information/update/{id}', [FotograferController::class, 'updateInformation'])->name('fotografer.update.information');
+
+    Route::post('order/accept/{order}', [FotograferController::class, 'acceptOrder'])->name('fotografer.order.acceptOrder');
+    Route::post('order/decline/{order}', [FotograferController::class, 'declineOrder'])->name('fotografer.order.declineOrder');
+    Route::post('order/done/{order}', [FotograferController::class, 'doneOrder'])->name('fotografer.order.doneOrder');
 });
 
 

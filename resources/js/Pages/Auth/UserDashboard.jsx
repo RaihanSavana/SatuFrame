@@ -107,7 +107,7 @@ const data = [
     },
 ];
 
-export default function UserDashboard() {
+export default function UserDashboard({ fotografers }) {
 
     return (
         <>
@@ -118,7 +118,9 @@ export default function UserDashboard() {
 
             <div className="container mx-auto px-20 mx-10 pt-10 bg-[url('images/dashboarduser.jpg')]  h-[30vh]  bg-cover bg-center bg-no-repeat">
                 <div>
-                    <h1 className="text-4xl font-bold text-white">Welcome Back, Raihan</h1>
+                    <h1 className="text-4xl font-bold text-white">
+                        Welcome Back, Raihan
+                    </h1>
                 </div>
 
                 <div className="flex flex-row pt-10 bg ">
@@ -147,34 +149,19 @@ export default function UserDashboard() {
                 </div>
 
                 <div className="flex gap-5 mt-5">
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
-                    <CardPhotographer
-                        imageSrc="https://via.placeholder.com/300"
-                        name="Wildan Arya"
-                        description="Wedding Specialist and Graduation Specialist"
-                        rating="4.9"
-                        price="Rp. 500,000.00/Hour"
-                    />
+                    {fotografers.map((fotografer) => (
+                        <CardPhotographer
+                            key={fotografer.id}
+                            imageSrc={
+                                fotografer.foto_profil ||
+                                "https://via.placeholder.com/300"
+                            }
+                            name={fotografer.user.name}
+                            description={fotografer.spesialisasi}
+                            rating="4.9"
+                            price={`Rp. ${fotografer.floor_price}`}
+                        />
+                    ))}
                 </div>
 
                 <div className="pt-10 ps-3">
@@ -182,7 +169,7 @@ export default function UserDashboard() {
                 </div>
 
                 <div class="overflow-x-auto pt-5 pb-5">
-                <DataTable
+                    <DataTable
                         columns={columns}
                         data={data}
                         direction="auto"
@@ -200,8 +187,6 @@ export default function UserDashboard() {
                     />
                 </div>
             </div>
-
-
         </>
     );
 }

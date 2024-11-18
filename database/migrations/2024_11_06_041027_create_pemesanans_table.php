@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('fotografer_id')->constrained('fotografers')->onDelete('cascade');
             $table->enum('status', ['pending', 'process', 'denied', 'completed'])->default('pending');
-            $table->integer('biaya');
+            $table->integer('biaya')->nullable();
             $table->string('date');
             $table->string('start_time');
             $table->string('end_time');

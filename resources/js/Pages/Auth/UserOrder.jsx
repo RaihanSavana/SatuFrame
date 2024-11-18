@@ -1,110 +1,9 @@
 import Navbar from "@/Layouts/Navbar";
 import DataTable from "react-data-table-component";
 
-const columns = [
-    {
-        name: "No",
-        selector: (row) => row.id,
-    },
-    {
-        name: "Photographer Name",
-        selector: (row) => row.name,
-    },
-    {
-        name: "Hours",
-        selector: (row) => row.hour,
-    },
-    {
-        name: "Price",
-        selector: (row) => row.price,
-    },
-    {
-        name: "Status",
-        selector: (row) => row.status,
-    },
-];
 
-const data = [
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-    {
-        id: 1,
-        name: "Wildan Arya Ganteng",
-        hour: "3",
-        price: "300.000",
-        status: "Done",
-    },
-];
-
-export default function UserOrder() {
+export default function UserOrder({ orders }) {
+    console.log(orders);
     return (
         <>
             <Navbar />
@@ -117,22 +16,41 @@ export default function UserOrder() {
                 </div>
 
                 <div class="overflow-x-auto pt-5 pb-5">
-                    <DataTable
-                        columns={columns}
-                        data={data}
-                        direction="auto"
-                        fixedHeader
-                        fixedHeaderScrollHeight="300px"
-                        highlightOnHover
-                        noHeader
-                        pagination
-                        pointerOnHover
-                        responsive
-                        selectableRowsRadio="checkbox"
-                        striped
-                        subHeaderAlign="center"
-                        subHeaderWrap
-                    />
+                    <table className="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th className="px-4 py-2">Nama Fotografer</th>
+                                <th className="px-4 py-2">Tanggal Pemesanan</th>
+                                <th className="px-4 py-2">Waktu Mulai</th>
+                                <th className="px-4 py-2">Waktu Selesai</th>
+                                <th className="px-4 py-2">Total Jam</th>
+                                <th className="px-4 py-2">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* Mapping data orders yang didapat dari Inertia */}
+                            {orders.map((order) => (
+                                <tr key={order.id}>
+                                    <td className="px-4 py-2">
+                                        {order.fotografer.user.name}
+                                    </td>
+                                    <td className="px-4 py-2">{order.date}</td>
+                                    <td className="px-4 py-2">
+                                        {order.start_time}
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {order.end_time}
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {order.total_jam}
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {order.status}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </>
