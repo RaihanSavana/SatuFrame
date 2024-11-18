@@ -2,42 +2,39 @@ import { useState } from "react";
 import { Button, Modal, Box, TextField } from "@mui/material";
 import { useForm, router } from "@inertiajs/react";
 import Navbar from "@/Layouts/Navbar";
-Navbar // Mengimpor useForm dan router dari Inertia
+Navbar; // Mengimpor useForm dan router dari Inertia
 
 export default function FotograferDashboard({ tada, user, orders }) {
-    const [open, setOpen] = useState(false); // State untuk membuka/menutup modal
-    const [selectedOrder, setSelectedOrder] = useState(null); // Menyimpan order yang dipilih
+    const [open, setOpen] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
 
-    // Inertia form hook
     const { data, setData, post } = useForm({
-        biaya: "", // Data input biaya
+        biaya: "",
     });
 
     const handleOpen = (order) => {
-        setSelectedOrder(order); // Menyimpan order yang dipilih
-        setOpen(true); // Membuka modal
+        setSelectedOrder(order);
+        setOpen(true);
     };
 
     const handleClose = () => {
-        setOpen(false); // Menutup modal
+        setOpen(false);
     };
 
     const handleAccept = () => {
-        // Menggunakan router.post untuk mengirimkan data ke server
         router.post(route("fotografer.order.acceptOrder", selectedOrder.id), {
-            biaya: data.biaya, // Mengirimkan data biaya
+            biaya: data.biaya,
         });
-
-        handleClose(); // Menutup modal setelah data terkirim
+        handleClose();
     };
 
     const handleDecline = (order) => {
         router.post(route("fotografer.order.declineOrder", order.id));
-    }
+    };
 
     const handleDone = (order) => {
         router.post(route("fotografer.order.doneOrder", order.id));
-    }
+    };
 
     return (
         <>
@@ -164,36 +161,46 @@ export default function FotograferDashboard({ tada, user, orders }) {
                 </div>
 
                 {/* Modal untuk input biaya */}
-                <Modal open={open} onClose={handleClose}>
-                    <Box className="modal-box">
-                        <h2 className="text-2xl font-bold mb-4">Input Biaya</h2>
-                        <TextField
-                            label="Biaya"
-                            type="number"
-                            fullWidth
-                            value={data.biaya}
-                            onChange={(e) => setData("biaya", e.target.value)}
-                            margin="normal"
-                        />
-                        <div className="pt-4">
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                onClick={handleClose}
-                            >
-                                Cancel
-                            </Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleAccept}
-                                className="ml-2"
-                            >
-                                Accept
-                            </Button>
+                {/* Modal */}
+                {open && (
+                    <div
+                        id="modal-background"
+                        onClick={handleClose}
+                        className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50"
+                    >
+                        <div
+                            className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <h2 className="text-xl font-bold mb-4">
+                                Input Biaya
+                            </h2>
+                            <input
+                                type="number"
+                                placeholder="Biaya"
+                                value={data.biaya}
+                                onChange={(e) =>
+                                    setData("biaya", e.target.value)
+                                }
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+                            />
+                            <div className="flex justify-end space-x-2">
+                                <button
+                                    onClick={handleClose}
+                                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleAccept}
+                                    className="px-4 py-2 bg-blue-600 text-white rounded-md"
+                                >
+                                    Accept
+                                </button>
+                            </div>
                         </div>
-                    </Box>
-                </Modal>
+                    </div>
+                )}
             </div>
         </>
     );

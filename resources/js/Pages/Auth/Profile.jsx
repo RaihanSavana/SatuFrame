@@ -6,7 +6,7 @@ import Footer from "@/Components/Footer";
 
 export default function Profile({ auth, fotografer }) {
     const [isOpen, setIsOpen] = useState(false);
-
+    console.log(fotografer)
     // Form state
     const { data, setData, post, processing, errors } = useForm({
         date: "",
@@ -47,7 +47,7 @@ export default function Profile({ auth, fotografer }) {
                             <div className="bg-white shadow rounded-lg p-6">
                                 <div className="flex flex-col items-center">
                                     <img
-                                        src="https://api.dicebear.com/7.x/lorelei/svg"
+                                        src={fotografer.foto_profil}
                                         className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                                     />
                                     <h1 className="text-xl font-bold">
@@ -57,12 +57,22 @@ export default function Profile({ auth, fotografer }) {
                                         Photographer
                                     </p>
                                     <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                        <button
-                                            onClick={() => setIsOpen(true)}
-                                            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
-                                        >
-                                            Order Now
-                                        </button>
+                                        {auth.user ? (
+                                            <>
+                                                <button
+                                                    onClick={() =>
+                                                        setIsOpen(true)
+                                                    }
+                                                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
+                                                >
+                                                    Order Now
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <p className="text-red-500">
+                                            </p>
+                                        )}
+
                                         <h3 className="text-gray-500">
                                             ⭐ ⭐ ⭐ ⭐ ⭐ 5
                                         </h3>

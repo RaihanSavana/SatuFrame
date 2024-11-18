@@ -22,15 +22,16 @@ Route::get('/', function () {
 
 Route::get('profile/{id}', [ExploreController::class, 'show'])->name('show.profile');
 
+// Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
 Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
 
 Route::get('/select-role', function () {
     return Inertia::render('Auth/SelectRole');
 })->name('select_role');
 
-Route::get('/explore', function() {
-    return Inertia::render('Auth/Explore');
-})->name('explore');
+// Route::get('/explore', function() {
+//     return Inertia::render('Auth/Explore');
+// })->name('explore');
 
 // Logout
 Route::middleware(['auth'])->group(function(){

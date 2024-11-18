@@ -11,15 +11,14 @@ class ExploreController extends Controller
     public function index()
     {
         $fotografers = Fotografer::with('user')->get();
-        dump($fotografers);
-        return Inertia::render('Auth/Explore', [
+        return Inertia::render('Auth/UserExplore', [
             'fotografers' => $fotografers,
         ]);
     }
 
     public function show($id)
     {
-        $fotografer = Fotografer::with('user')->where('user_id', $id)->first();
+        $fotografer = Fotografer::with('user')->where('id', $id)->first();
         return Inertia::render('Auth/Profile', [
             'fotografer' => $fotografer
         ]);

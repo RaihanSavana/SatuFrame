@@ -4,7 +4,7 @@ import Footer from "@/Components/Footer";
 
 export default function FotograferProfile({ auth, data = {}, user = {} }) {
     // Ensure data and user are defined before accessing their properties
-    const fotoProfil = data?.foto_profil || "https://via.placeholder.com/150"; // Default image if no foto_profil
+    const fotoProfil = 'data?.foto_profil' || "https://via.placeholder.com/150"; // Default image if no foto_profil
     const spesialisasi = data?.spesialisasi ? data.spesialisasi.split(",") : []; // Default to empty array if no spesialisasi
     const portofolio = data?.portofolio ? JSON.parse(data.portofolio) : []; // Default to empty array if no portofolio
     const deskripsi = data?.deskripsi || "No description available."; // Default description

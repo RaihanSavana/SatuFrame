@@ -18,9 +18,17 @@ class FotograferController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
+
+        // Ambil data fotografer berdasarkan user yang login
         $fotografer = Fotografer::where('user_id', $id)->first();
 
-        $orders = Pemesanan::with('user')->get();
+        // Jika fotografer ditemukan, ambil data pemesanan berdasarkan fotografer_id
+        $orders = [];
+        if ($fotografer) {
+            $orders = Pemesanan::with('user')
+                ->where('fotografer_id', $fotografer->id)
+                ->get();
+        }
 
         return Inertia::render('Auth/FotograferDashboard', [
             'tada' => $fotografer,
@@ -28,6 +36,7 @@ class FotograferController extends Controller
             'orders' => $orders
         ]);
     }
+
 
     public function show(Fotografer $fotografer)
     {
