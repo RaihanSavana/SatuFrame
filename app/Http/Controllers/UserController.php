@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fotografer;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -25,11 +26,11 @@ class UserController extends Controller
     }
 
     public function dashboard() {
-        return Inertia::render('Auth/UserDashboard');
-    }
+        $fotografers = Fotografer::with('user')->get();
 
-    public function order() {
-        return Inertia::render('Auth/UserOrder');
+        return Inertia::render('Auth/UserDashboard', [
+            'fotografers' => $fotografers,
+        ]);
     }
 
     public function update(Request $request, $id) {

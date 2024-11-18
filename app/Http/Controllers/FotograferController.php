@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fotografer;
 use App\Models\User;
+use Inertia\Inertia;
+use App\Models\Pemesanan;
+use App\Models\Fotografer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Inertia\Inertia;
 
 class FotograferController extends Controller
 {
@@ -18,9 +19,13 @@ class FotograferController extends Controller
     {
         $id = Auth::user()->id;
         $fotografer = Fotografer::where('user_id', $id)->first();
+
+        $orders = Pemesanan::with('user')->get();
+
         return Inertia::render('Auth/FotograferDashboard', [
             'tada' => $fotografer,
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'orders' => $orders
         ]);
     }
 
@@ -186,5 +191,36 @@ class FotograferController extends Controller
 
         // Redirect back with success message
         return redirect()->route('fotografer.profile')->with('message', 'Photographer profile successfully updated');
+    }
+
+
+    // Method untuk menerima pesanan
+    public function acceptOrder(Request $request, Pemesanan $order)
+    {
+        // Update status pesanan menjadi "process"
+        $order->status = 'process';
+        $order->biaya = $request->biaya; // Menyimpan biaya yang dimasukkan
+        $order->save();
+
+        return redirect()->route('fotografer.dashboard')->with('message', 'Order accepted successfully');
+    }
+
+    // Method untuk menolak pesanan
+    public function declineOrder(Pemesanan $order)
+    {
+        // Update status pesanan menjadi "declined"
+        $order->status = 'denied';
+        $order->save();
+
+        return redirect()->route('fotografer.dashboard')->with('message', 'Order declined');
+    }
+
+    public function doneOrder(Pemesanan $order)
+    {
+        // Update status pesanan menjadi "declined"
+        $order->status = 'completed';
+        $order->save();
+
+        return redirect()->route('fotografer.dashboard')->with('message', 'Order Completed');
     }
 }
