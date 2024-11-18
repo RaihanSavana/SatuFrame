@@ -21,7 +21,12 @@ class FotograferController extends Controller
 
     public function show(Fotografer $fotografer)
     {
-        return Inertia::render('Auth/FotograferProfile');
+        $id = Auth::user()->id;
+        $fotografer = Fotografer::where('user_id', $id)->first();
+        return Inertia::render('Auth/FotograferProfile',[
+            'data' => $fotografer,
+            'user' => Auth::user()
+        ]);
     }
 
     public function editProfile()
