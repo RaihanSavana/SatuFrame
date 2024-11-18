@@ -27,8 +27,16 @@ class UserController extends Controller
 
     public function dashboard() {
         $fotografers = Fotografer::with('user')->get();
-
+        dd($fotografers);
         return Inertia::render('Auth/UserDashboard', [
+            'fotografers' => $fotografers,
+        ]);
+    }
+
+    public function explore() {
+        $fotografers = Fotografer::with('user')->get();
+        dd($fotografers);
+        return Inertia::render('Auth/UserExplore', [
             'fotografers' => $fotografers,
         ]);
     }

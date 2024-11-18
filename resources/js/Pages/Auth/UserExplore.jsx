@@ -1,9 +1,9 @@
-import React from "react";
 import Navbar from "@/Layouts/Navbar";
 import DropdownButton from "@/Components/DropdownButton";
 import CardPhotographer from "@/Components/CardPhotographer";
 
-export default function Explore({ fotografers }) {
+export default function UserExplore({ fotografers }) {
+    console.log(fotografers)
     const specializations = [{ label: "Wedding", href: "#" }];
     const locations = [{ label: "Malang", href: "#" }];
     const prices = [

@@ -11,8 +11,7 @@ class ExploreController extends Controller
     public function index()
     {
         $fotografers = Fotografer::with('user')->get();
-        dump($fotografers);
-        return Inertia::render('Auth/Explore', [
+        return Inertia::render('Auth/UserExplore', [
             'fotografers' => $fotografers,
         ]);
     }
