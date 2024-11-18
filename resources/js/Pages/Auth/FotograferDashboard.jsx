@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Modal, Box, TextField } from "@mui/material";
 import { useForm, router } from "@inertiajs/react";
 import Navbar from "@/Layouts/Navbar";
-Navbar; // Mengimpor useForm dan router dari Inertia
+import DataTable from "react-data-table-component";
 
 export default function FotograferDashboard({ tada, user, orders }) {
     const [open, setOpen] = useState(false);
@@ -35,6 +35,97 @@ export default function FotograferDashboard({ tada, user, orders }) {
     const handleDone = (order) => {
         router.post(route("fotografer.order.doneOrder", order.id));
     };
+
+    // Mapping data for DataTable
+    const datas = orders.map((order) => ({
+        id: order.id,
+        nama_customer: order.user.name,
+        tanggal_pemesanan: order.date,
+        waktu_mulai: order.start_time,
+        waktu_selesai: order.end_time,
+        total_jam: order.total_jam,
+        status: (
+            <span
+                className={`px-3 py-1 rounded-full text-sm font-bold ${
+                    order.status === "pending"
+                        ? "bg-yellow-200 text-yellow-800"
+                        : order.status === "process"
+                        ? "bg-blue-200 text-blue-800"
+                        : order.status === "denied"
+                        ? "bg-red-200 text-red-800"
+                        : order.status === "completed"
+                        ? "bg-green-200 text-green-800"
+                        : ""
+                }`}
+            >
+                {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+            </span>
+        ),
+        action: (
+            <div>
+                {order.status === "pending" ? (
+                    <div className="flex gap-2">
+                        <button
+                            className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+                            onClick={() => handleOpen(order)}
+                        >
+                            Accept
+                        </button>
+                        <button
+                            className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 text-center  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                            onClick={() => handleDecline(order)}
+                        >
+                            Decline
+                        </button>
+                    </div>
+                ) : order.status === "process" ? (
+                    <button
+                        className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+                        onClick={() => handleDone(order)}
+                    >
+                        Done
+                    </button>
+                ) : null}
+            </div>
+        ),
+    }));
+
+    const columns = [
+        {
+            name: "Nama Customer",
+            selector: (row) => row.nama_customer,
+            sortable: true,
+        },
+        {
+            name: "Tanggal Pemesanan",
+            selector: (row) => row.tanggal_pemesanan,
+            sortable: true,
+        },
+        {
+            name: "Waktu Mulai",
+            selector: (row) => row.waktu_mulai,
+            sortable: true,
+        },
+        {
+            name: "Waktu Selesai",
+            selector: (row) => row.waktu_selesai,
+            sortable: true,
+        },
+        {
+            name: "Total Jam",
+            selector: (row) => row.total_jam,
+            sortable: true,
+        },
+        {
+            name: "Status",
+            selector: (row) => row.status,
+            sortable: true,
+        },
+        {
+            name: "Action",
+            selector: (row) => row.action,
+        },
+    ];
 
     return (
         <>
@@ -92,72 +183,15 @@ export default function FotograferDashboard({ tada, user, orders }) {
                 </div>
 
                 <div className="overflow-x-auto pt-5 pb-5">
-                    <table className="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th className="px-4 py-2">Nama Customer</th>
-                                <th className="px-4 py-2">Tanggal Pemesanan</th>
-                                <th className="px-4 py-2">Waktu Mulai</th>
-                                <th className="px-4 py-2">Waktu Selesai</th>
-                                <th className="px-4 py-2">Total Jam</th>
-                                <th className="px-4 py-2">Status</th>
-                                <th className="px-4 py-2">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {orders.map((order) => (
-                                <tr key={order.id}>
-                                    <td className="px-4 py-2">
-                                        {order.user.name}
-                                    </td>
-                                    <td className="px-4 py-2">{order.date}</td>
-                                    <td className="px-4 py-2">
-                                        {order.start_time}
-                                    </td>
-                                    <td className="px-4 py-2">
-                                        {order.end_time}
-                                    </td>
-                                    <td className="px-4 py-2">
-                                        {order.total_jam}
-                                    </td>
-                                    <td className="px-4 py-2">
-                                        {order.status}
-                                    </td>
-                                    <td className="px-4 py-2">
-                                        {order.status === "pending" ? (
-                                            <div>
-                                                <button
-                                                    className="px-4 py-2 bg-green-500 text-white rounded-md"
-                                                    onClick={() =>
-                                                        handleOpen(order)
-                                                    }
-                                                >
-                                                    Accept
-                                                </button>
-                                                <button
-                                                    className="px-4 py-2 bg-red-500 text-white rounded-md ml-2"
-                                                    onClick={() =>
-                                                        handleDecline(order)
-                                                    }
-                                                >
-                                                    Decline
-                                                </button>
-                                            </div>
-                                        ) : order.status === "process" ? (
-                                            <button
-                                                className="px-4 py-2 bg-blue-500 text-white rounded-md"
-                                                onClick={() =>
-                                                    handleDone(order)
-                                                }
-                                            >
-                                                Done
-                                            </button>
-                                        ) : null}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <DataTable
+                        columns={columns}
+                        data={datas}
+                        pagination
+                        highlightOnHover
+                        striped
+                        responsive
+                        fixedHeader
+                    />
                 </div>
 
                 {/* Modal untuk input biaya */}

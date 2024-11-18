@@ -51,7 +51,6 @@ class FotograferController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-
         return Inertia::render('Auth/FotograferEditProfile', [
             'user' => $user
         ]);

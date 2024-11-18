@@ -18,7 +18,8 @@ class OrderController extends Controller
         $orders = Pemesanan::with('fotografer.user')->get();
 
         return Inertia::render('Auth/UserOrder', [
-            'orders' => $orders
+            'orders' => $orders,
+            'user' => Auth::user(),
         ]);
     }
 

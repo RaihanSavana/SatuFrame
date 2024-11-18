@@ -6,7 +6,7 @@ import Footer from "@/Components/Footer";
 
 export default function Profile({ auth, fotografer }) {
     const [isOpen, setIsOpen] = useState(false);
-    console.log(fotografer)
+    console.log(fotografer);
     // Form state
     const { data, setData, post, processing, errors } = useForm({
         date: "",
@@ -47,16 +47,24 @@ export default function Profile({ auth, fotografer }) {
                             <div className="bg-white shadow rounded-lg p-6">
                                 <div className="flex flex-col items-center">
                                     <img
-                                        src={fotografer.foto_profil}
-                                        className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
+                                        src={fotografer.foto_profil} // Dynamically set the image source
+                                        alt="Profile Picture"
+                                        className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0 object-cover"
                                     />
                                     <h1 className="text-xl font-bold">
-                                        {fotografer.user.name}
+                                        {fotografer.user.name ||
+                                            "Anonymous User"}{" "}
+                                        {/* Default name */}
                                     </h1>
                                     <p className="text-gray-700">
-                                        Photographer
+                                        {fotografer.user.role ||
+                                            "No role specified"}{" "}
+                                        {/* Default role */}
                                     </p>
-                                    <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                </div>
+
+                                <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-4 items-center justify-center">
+                                    <div className="flex flex-col items-center gap-4 sm:gap-2">
                                         {auth.user ? (
                                             <>
                                                 <button
@@ -69,22 +77,33 @@ export default function Profile({ auth, fotografer }) {
                                                 </button>
                                             </>
                                         ) : (
-                                            <p className="text-red-500">
-                                            </p>
+                                            <p className="text-red-500"></p>
                                         )}
 
-                                        <h3 className="text-gray-500">
-                                            ⭐ ⭐ ⭐ ⭐ ⭐ 5
-                                        </h3>
-                                        <p className="text-gray-600">
-                                            {fotografer.kota}
+                                        <h2 className="text-2xl font-semibold">
+                                            {fotografer.user.name ||
+                                                "Anonymous User"}{" "}
+                                            {/* Default name */}
+                                        </h2>
+                                    </div>
+                                    <h3 className="text--500">
+                                        ⭐ ⭐ ⭐ ⭐ ⭐ 5 {/* Default rating */}
+                                    </h3>
+                                    <p className="text-gray-600">
+                                        {fotografer.user.alamat ||
+                                            "Anonymous User"}
+                                        , {fotografer.kota}
+                                    </p>
+                                    <div className="flex items-center mt-2">
+                                        <p className="text23xl font-semibold text-gray-800 p-4 rounded-lg border border-gray-300 shadow-md hover:bg-gray-200 cursor-pointer">
+                                            Start From
+                                            <span className="font-bold text-gray-900 ml-2">
+                                                Rp.{fotografer.floor_price}
+                                            </span>
+                                            <span className="block text-sm mt-2 text-gray-600">
+                                                Book Now
+                                            </span>
                                         </p>
-                                        <div className="flex items-center mt-2">
-                                            <p className="text-xl font-semibold">
-                                                Start From
-                                            </p>
-                                            <p>Rp. {fotografer.floor_price}</p>
-                                        </div>
                                     </div>
                                 </div>
                                 <hr className="my-6 border-t border-gray-300"></hr>
