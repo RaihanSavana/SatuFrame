@@ -16,14 +16,19 @@ class FotograferController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Auth/FotograferDashboard');
+        $id = Auth::user()->id;
+        $fotografer = Fotografer::where('user_id', $id)->first();
+        return Inertia::render('Auth/FotograferDashboard', [
+            'tada' => $fotografer,
+            'user' => Auth::user()
+        ]);
     }
 
     public function show(Fotografer $fotografer)
     {
         $id = Auth::user()->id;
         $fotografer = Fotografer::where('user_id', $id)->first();
-        return Inertia::render('Auth/FotograferProfile',[
+        return Inertia::render('Auth/FotograferProfile', [
             'data' => $fotografer,
             'user' => Auth::user()
         ]);
@@ -110,5 +115,76 @@ class FotograferController extends Controller
         Fotografer::create($data);
 
         return redirect()->route('fotografer.profile')->with('message', 'Photographer successfully added');
+    }
+
+    public function indexInformation()
+    {
+        $id = Auth::user()->id;
+        $fotografer = Fotografer::where('user_id', $id)->first();
+        return Inertia::render('Auth/FotograferUpdateInformation', [
+            'fotografer' => $fotografer
+        ]);
+    }
+
+
+    public function updateInformation(Request $request, $id)
+    {
+        // Find the photographer record by ID
+        $fotografer = Fotografer::findOrFail($id);
+
+        // Validate the incoming request
+        $data = $request->validate([
+            'spesialisasi' => 'required|array', // Expect an array for checkbox inputs
+            'spesialisasi.*' => 'string',       // Each checkbox value should be a string
+            'portofolio' => 'nullable',
+            'portofolio.*' => 'mimes:jpg,jpeg,png|max:10000', // Validate each uploaded file
+            'foto_profil' => 'nullable|mimes:jpg,jpeg,png|max:10000',
+            'deskripsi' => 'required',
+            'kota' => 'required',
+            'floor_price' => 'required|numeric',
+        ]);
+
+        // Convert the spesialisasi array into a comma-separated string
+        $data['spesialisasi'] = implode(',', $data['spesialisasi']);
+
+        // Handle portfolio file uploads (if updated)
+        if ($request->hasFile('portofolio')) {
+            // Delete old portfolio files
+            $oldPortofolio = json_decode($fotografer->portofolio, true);
+            foreach ($oldPortofolio as $oldFile) {
+                if (file_exists(public_path($oldFile))) {
+                    unlink(public_path($oldFile));
+                }
+            }
+
+            // Upload the new portfolio files
+            $portofolioPaths = [];
+            foreach ($request->file('portofolio') as $file) {
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('/uploads/portofolio'), $fileName);
+                $portofolioPaths[] = '/uploads/portofolio/' . $fileName;
+            }
+            $data['portofolio'] = json_encode($portofolioPaths); // Store new paths as JSON
+        }
+
+        // Handle profile photo upload (if updated)
+        if ($request->hasFile('foto_profil')) {
+            // Delete old profile photo
+            if (file_exists(public_path($fotografer->foto_profil))) {
+                unlink(public_path($fotografer->foto_profil));
+            }
+
+            // Upload the new profile photo
+            $fotoProfilFile = $request->file('foto_profil');
+            $fotoProfilFileName = time() . '_' . $fotoProfilFile->getClientOriginalName();
+            $fotoProfilFile->move(public_path('/uploads/foto_profil'), $fotoProfilFileName);
+            $data['foto_profil'] = '/uploads/foto_profil/' . $fotoProfilFileName;
+        }
+
+        // Update the photographer record with new data
+        $fotografer->update($data);
+
+        // Redirect back with success message
+        return redirect()->route('fotografer.profile')->with('message', 'Photographer profile successfully updated');
     }
 }

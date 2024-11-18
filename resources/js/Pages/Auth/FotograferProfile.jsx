@@ -2,7 +2,15 @@ import { Head } from "@inertiajs/react";
 import Navbar from "@/Layouts/Navbar";
 import Footer from "@/Components/Footer";
 
-export default function FotograferProfile({ auth, data, user }) {
+export default function FotograferProfile({ auth, data = {}, user = {} }) {
+    // Ensure data and user are defined before accessing their properties
+    const fotoProfil = data?.foto_profil || "https://via.placeholder.com/150"; // Default image if no foto_profil
+    const spesialisasi = data?.spesialisasi ? data.spesialisasi.split(",") : []; // Default to empty array if no spesialisasi
+    const portofolio = data?.portofolio ? JSON.parse(data.portofolio) : []; // Default to empty array if no portofolio
+    const deskripsi = data?.deskripsi || "No description available."; // Default description
+    const kota = data?.kota || "Unknown city"; // Default city
+    const floorPrice = data?.floor_price || "0"; // Default price
+
     return (
         <>
             <Head title="Photography Service - Jasa Fotografi" />
@@ -16,15 +24,20 @@ export default function FotograferProfile({ auth, data, user }) {
                             <div className="bg-white shadow rounded-lg p-6">
                                 <div className="flex flex-col items-center">
                                     <img
-                                        src={data.foto_profil} // Dynamically set the image source
+                                        src={fotoProfil} // Dynamically set the image source
                                         alt="Profile Picture"
                                         className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0 object-cover"
                                     />
 
                                     <h1 className="text-xl font-bold">
-                                        {user.name}
+                                        {user?.name || "Anonymous User"}{" "}
+                                        {/* Default name */}
                                     </h1>
-                                    <p className="text-gray-700">{user.role}</p>
+                                    <p className="text-gray-700">
+                                        {user?.role || "No role specified"}{" "}
+                                        {/* Default role */}
+                                    </p>
+
                                     <div className="mt-6 flex flex-wrap gap-4 justify-center">
                                         <a
                                             href={route(
@@ -36,17 +49,19 @@ export default function FotograferProfile({ auth, data, user }) {
                                         </a>
 
                                         <h2 className="text-2xl font-semibold">
-                                            {user.name}
+                                            {user?.name || "Anonymous User"}{" "}
+                                            {/* Default name */}
                                         </h2>
                                         <h3 className="text--500">
-                                            ⭐ ⭐ ⭐ ⭐ ⭐ 5
+                                            ⭐ ⭐ ⭐ ⭐ ⭐ 5{" "}
+                                            {/* Default rating */}
                                         </h3>
                                         <p className="text-gray-600">
-                                            {data.kota}
-                                        </p>
+                                        {user?.alamat || "Anonymous User"}, {kota}
+                                            </p>
                                         <div className="flex items-center mt-2">
                                             <p className="text-xl font-semibold">
-                                                Start From {data.floor_price}
+                                                Start From {floorPrice}
                                             </p>
                                         </div>
                                     </div>
@@ -54,16 +69,14 @@ export default function FotograferProfile({ auth, data, user }) {
                                 <hr className="my-6 border-t border-gray-300"></hr>
                                 <div className="flex flex-col">
                                     <ul className="flex flex-wrap gap-4">
-                                        {data.spesialisasi
-                                            .split(",")
-                                            .map((spec, index) => (
-                                                <li
-                                                    key={index}
-                                                    className="mb-2 px-4 py-2 border border-gray-300 rounded-full"
-                                                >
-                                                    {spec}
-                                                </li>
-                                            ))}
+                                        {spesialisasi.map((spec, index) => (
+                                            <li
+                                                key={index}
+                                                className="mb-2 px-4 py-2 border border-gray-300 rounded-full"
+                                            >
+                                                {spec}
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -73,40 +86,43 @@ export default function FotograferProfile({ auth, data, user }) {
                                 <h2 className="text-xl font-bold mb-4">
                                     About Me
                                 </h2>
-                                <p className="text-gray-700">
-                                    {data.deskripsi}
-                                </p>
+                                <p className="text-gray-700">{deskripsi}</p>
                                 <h3 className="text-xl font-semibold pt-5">
                                     Portofolio
                                 </h3>
                                 <div className="grid grid-cols-2 gap-4 mt-4">
-                                    {JSON.parse(data.portofolio).map(
-                                        (imagePath, index) => (
-                                            <div
-                                                key={index}
-                                                className="w-full h-40 bg-gray-300"
-                                            >
-                                                <img
-                                                    src={imagePath.replace(
-                                                        /\\/g,
-                                                        ""
-                                                    )} // Remove backslashes from the path
-                                                    alt={`Image ${index + 1}`}
-                                                    className="w-full h-full object-cover rounded-lg"
-                                                />
-                                            </div>
-                                        )
-                                    )}
+                                    {portofolio.map((imagePath, index) => (
+                                        <div
+                                            key={index}
+                                            className="w-full h-40 bg-gray-300"
+                                        >
+                                            <img
+                                                src={imagePath.replace(
+                                                    /\\/g,
+                                                    ""
+                                                )} // Remove backslashes from the path
+                                                alt={`Image ${index + 1}`}
+                                                className="w-full h-full object-cover rounded-lg"
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
 
                                 <div className="pt-5">
                                     <a
-                                        href={route(
-                                            "fotografer.edit.information"
-                                        )}
+                                        href={
+                                            data?.portofolio
+                                                ? route(
+                                                      "fotografer.index.information"
+                                                  )
+                                                : route(
+                                                      "fotografer.edit.information"
+                                                  )
+                                        } // Conditional route
                                         className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
                                     >
-                                        Add
+                                        {data?.portofolio ? "Update" : "Create"}{" "}
+                                        {/* Conditional text */}
                                     </a>
                                 </div>
 
