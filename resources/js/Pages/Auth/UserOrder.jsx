@@ -25,6 +25,9 @@ export default function UserOrder({ orders }) {
                                 <th className="px-4 py-2">Total Jam</th>
                                 <th className="px-4 py-2">Status</th>
                                 <th className="px-4 py-2">
+                                    Biaya
+                                </th>
+                                <th className="px-4 py-2">
                                     Hubungi Fotografer
                                 </th>
                             </tr>
@@ -56,6 +59,9 @@ export default function UserOrder({ orders }) {
                                         </td>
                                         <td className="px-4 py-2">
                                             {order.status}
+                                        </td>
+                                        <td className="px-4 py-2">
+                                            {order.biaya}
                                         </td>
                                         <td className="px-4 py-2">
                                             {order.status === "process" ? (
