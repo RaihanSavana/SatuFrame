@@ -51,6 +51,7 @@ Route::middleware(['auth', 'role:fotografer'])->group(function () {
     Route::get('/information/edit', [FotograferController::class, 'editInformation'])->name('fotografer.edit.information');
     Route::patch('/profile/edit/{id}', [FotograferController::class, 'updateProfile'])->name('fotografer.update.profile');
     Route::post('/information/update', [FotograferController::class, 'updateInformation'])->name('fotografer.update.information');
+    Route::post('/information', [FotograferController::class, 'store'])->name('fotografer.store.information');
 });
 
 
