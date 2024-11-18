@@ -200,7 +200,7 @@ export default function FotograferProfile({ auth }) {
                                         href={route('fotografer.edit.information')}
                                         className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
                                     >
-                                        Edit Information
+                                        Add
                                     </a>
                                 </div>
 
