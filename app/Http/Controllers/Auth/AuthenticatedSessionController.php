@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('fotografer.dashboard');
         }
 
-        return redirect()->intended(route('landing_page', absolute: false));
+        return redirect()->intended(route('user.dashboard', absolute: false));
     }
 
     /**
