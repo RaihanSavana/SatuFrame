@@ -18,7 +18,7 @@ class ExploreController extends Controller
 
     public function show($id)
     {
-        $fotografer = Fotografer::with('user')->where('user_id', $id)->first();
+        $fotografer = Fotografer::with('user')->where('id', $id)->first();
         return Inertia::render('Auth/Profile', [
             'fotografer' => $fotografer
         ]);
