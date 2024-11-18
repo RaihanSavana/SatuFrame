@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FotograferController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\MidtransController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -48,6 +49,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     Route::get('/user-profile/edit', [UserController::class, 'create'])->name('user.edit.profile');
     Route::patch('user-profile/edit/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::post('/pay/{id}', [MidtransController::class, 'midtrans'])->name('payment.midtrans');
 });
 
 // Route Fotografer

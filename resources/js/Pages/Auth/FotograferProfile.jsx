@@ -4,7 +4,7 @@ import Footer from "@/Components/Footer";
 
 export default function FotograferProfile({ auth, data = {}, user = {} }) {
     // Ensure data and user are defined before accessing their properties
-    const fotoProfil = 'data?.foto_profil' || "https://via.placeholder.com/150"; // Default image if no foto_profil
+    const fotoProfil = data?.foto_profil || "https://via.placeholder.com/150"; // Default image if no foto_profil
     const spesialisasi = data?.spesialisasi ? data.spesialisasi.split(",") : []; // Default to empty array if no spesialisasi
     const portofolio = data?.portofolio ? JSON.parse(data.portofolio) : []; // Default to empty array if no portofolio
     const deskripsi = data?.deskripsi || "No description available."; // Default description
@@ -22,65 +22,85 @@ export default function FotograferProfile({ auth, data = {}, user = {} }) {
                     <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
                         <div className="col-span-4 sm:col-span-3">
                             <div className="bg-white shadow rounded-lg p-6">
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src={fotoProfil} // Dynamically set the image source
-                                        alt="Profile Picture"
-                                        className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0 object-cover"
-                                    />
-
-                                    <h1 className="text-xl font-bold">
-                                        {user?.name || "Anonymous User"}{" "}
-                                        {/* Default name */}
-                                    </h1>
-                                    <p className="text-gray-700">
-                                        {user?.role || "No role specified"}{" "}
-                                        {/* Default role */}
-                                    </p>
-
-                                    <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                        <a
-                                            href={route(
-                                                "fotografer.edit.profile"
-                                            )}
-                                            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
-                                        >
-                                            Edit Profile
-                                        </a>
-
-                                        <h2 className="text-2xl font-semibold">
-                                            {user?.name || "Anonymous User"}{" "}
-                                            {/* Default name */}
-                                        </h2>
-                                        <h3 className="text--500">
-                                            ⭐ ⭐ ⭐ ⭐ ⭐ 5{" "}
-                                            {/* Default rating */}
-                                        </h3>
-                                        <p className="text-gray-600">
-                                        {user?.alamat || "Anonymous User"}, {kota}
+                                <div className="col-span-4 sm:col-span-3">
+                                    <div className="bg-white shadow rounded-lg p-6">
+                                        <div className="flex flex-col items-center">
+                                            <img
+                                                src={fotoProfil} // Dynamically set the image source
+                                                alt="Profile Picture"
+                                                className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0 object-cover"
+                                            />
+                                            <h1 className="text-xl font-bold">
+                                                {user?.name || "Anonymous User"}{" "}
+                                                {/* Default name */}
+                                            </h1>
+                                            <p className="text-gray-700">
+                                                {user?.role ||
+                                                    "No role specified"}{" "}
+                                                {/* Default role */}
                                             </p>
-                                        <div className="flex items-center mt-2">
-                                            <p className="text-xl font-semibold">
-                                                Start From {floorPrice}
+                                        </div>
+
+                                        <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-4 items-center justify-center">
+                                            <div className="flex flex-col items-center gap-4 sm:gap-2">
+                                                <a
+                                                    href={route(
+                                                        "fotografer.edit.profile"
+                                                    )}
+                                                    className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+                                                >
+                                                    Edit Profile
+                                                </a>
+
+                                                <h2 className="text-2xl font-semibold">
+                                                    {user?.name ||
+                                                        "Anonymous User"}{" "}
+                                                    {/* Default name */}
+                                                </h2>
+                                            </div>
+                                            <h3 className="text--500">
+                                                ⭐ ⭐ ⭐ ⭐ ⭐ 5{" "}
+                                                {/* Default rating */}
+                                            </h3>
+                                            <p className="text-gray-600">
+                                                {user?.alamat ||
+                                                    "Anonymous User"}
+                                                , {kota}
                                             </p>
+                                            <div className="flex items-center mt-2">
+                                                <p className="text23xl font-semibold text-gray-800 p-4 rounded-lg border border-gray-300 shadow-md hover:bg-gray-200 cursor-pointer">
+                                                    Start From
+                                                    <span className="font-bold text-gray-900 ml-2">
+                                                        Rp.{floorPrice}
+                                                    </span>
+                                                    <span className="block text-sm mt-2 text-gray-600">
+                                                        Book Now
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <hr className="my-6 border-t border-gray-300" />
+
+                                        <div className="flex flex-col">
+                                            <ul className="flex flex-col sm:flex-row flex-wrap gap-4">
+                                                {spesialisasi.map(
+                                                    (spec, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="mb-2 px-4 py-2 border border-gray-300 rounded-full"
+                                                        >
+                                                            {spec}
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <hr className="my-6 border-t border-gray-300"></hr>
-                                <div className="flex flex-col">
-                                    <ul className="flex flex-wrap gap-4">
-                                        {spesialisasi.map((spec, index) => (
-                                            <li
-                                                key={index}
-                                                className="mb-2 px-4 py-2 border border-gray-300 rounded-full"
-                                            >
-                                                {spec}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
                             </div>
                         </div>
+
                         <div className="col-span-4 sm:col-span-9">
                             <div className="bg-white shadow rounded-lg p-6">
                                 <h2 className="text-xl font-bold mb-4">
@@ -119,7 +139,7 @@ export default function FotograferProfile({ auth, data = {}, user = {} }) {
                                                       "fotografer.edit.information"
                                                   )
                                         } // Conditional route
-                                        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg opacity-70"
+                                        className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
                                     >
                                         {data?.portofolio ? "Update" : "Create"}{" "}
                                         {/* Conditional text */}

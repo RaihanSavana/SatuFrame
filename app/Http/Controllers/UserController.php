@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fotografer;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -27,15 +28,18 @@ class UserController extends Controller
 
     public function dashboard() {
         $fotografers = Fotografer::with('user')->get();
-        dd($fotografers);
+        $orders = Pemesanan::with('fotografer.user')->get();
+
         return Inertia::render('Auth/UserDashboard', [
             'fotografers' => $fotografers,
+            'orders' => $orders,
+            'user' => Auth::user(),
+
         ]);
     }
 
     public function explore() {
         $fotografers = Fotografer::with('user')->get();
-        dd($fotografers);
         return Inertia::render('Auth/UserExplore', [
             'fotografers' => $fotografers,
         ]);
